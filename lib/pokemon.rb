@@ -19,11 +19,19 @@ class Pokemon
   
   def self.find(id, db)
     sql = <<-SQL
+<<<<<<< HEAD
       SELECT * FROM pokemon WHERE id = ?
     SQL
  
     result = db.execute(sql, id)
     pokemon = Pokemon.new(name: result[0][1], type: result[0][2], db: db, id: result[0][0])
+=======
+      SELECT FROM pokemon WHERE id = ?
+    SQL
+ 
+    result = db.execute(sql, id)
+    pokemon = Pokemon.new(result[1], result[2], db, result[0])
+>>>>>>> 2da9cd01a0629d408b2e7fafff550acb8c49360a
     return pokemon
   end
 end
